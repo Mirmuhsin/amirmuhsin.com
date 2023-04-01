@@ -7,7 +7,6 @@ github_username: amirmuhsin
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
 permalink: /:year/:month/:day/:title.html
