@@ -1,0 +1,12 @@
+title: Amir Muhsin
+email: mirmuhsin.sodiqov@gmail.com
+description: Android/Game Developer
+baseurl: ""
+url: "https://amirmuhsin.github.io"
+github_username: amirmuhsin
+
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-feed
