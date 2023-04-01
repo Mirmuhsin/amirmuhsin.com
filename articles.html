@@ -3,23 +3,24 @@ layout: null
 ---
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <title>Articles | Amir Muhsin</title>
-  <link rel="stylesheet" href="tufte.css"/>
-  <link rel="stylesheet" href="latex.css"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-  <h1>Articles</h1>
-  <ul>
-    {% for post in site.posts %}
-      <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
-        <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
-      </li>
-    {% endfor %}
-  </ul>
-  <p><a href="index.html">Back to home</a></p>
-</body>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Articles</title>
+    <link rel="stylesheet" href="/tufte.css"/>
+    <link rel="stylesheet" href="/latex.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <article>
+      <h1>Articles</h1>
+      <ul>
+      {% for post in site.posts %}
+        <li>
+          <a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %d, %Y" }}
+        </li>
+      {% endfor %}
+      </ul>
+      <p><a href="/">Back to home</a></p>
+    </article>
+  </body>
 </html>
