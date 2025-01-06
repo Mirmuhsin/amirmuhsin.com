@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Fix the Grammar</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+      background-color: #f8f8f8;
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .text-container {
+      margin-bottom: 30px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    p {
+      display: inline;
+    }
+
+    .input-container {
+      position: relative;
+      display: inline-block;
+      vertical-align: bottom;
+      margin: 0 2px;
+    }
+
+    .text-container input {
+      border: none;
+      border-bottom: 2px solid #ccc;
+      font-size: 16px;
+      padding: 2px 20px 2px 4px;
+      background: transparent;
+      outline: none;
+    }
+
+    .input-container .error-icon,
+    .input-container .success-icon {
+      position: absolute;
+      top: -8px;
+      right: 2px;
+      font-size: 12px;
+      display: none;
+      pointer-events: none;
+    }
+
+    .error-icon {
+      color: #dc3545;
+    }
+
+    .success-icon {
+      color: #28a745;
+    }
+
+    .text-container input.correct {
+      border-bottom: 2px solid #28a745;
+    }
+
+    .text-container input.incorrect {
+      border-bottom: 2px solid #dc3545;
+    }
+
+    /* Specific widths for inputs */
+    .text-container input#word1 { width: 40px; }
+    .text-container input#word2 { width: 65px; }
+    .text-container input#word3 { width: 145px; }
+    .text-container input#word4 { width: 90px; }
+    .text-container input#word5 { width: 90px; }
+    .text-container input#word6 { width: 60px; }
+    .text-container input#word7 { width: 65px; }
+    .text-container input#word8 { width: 80px; }
+    .text-container input#word9 { width: 80px; }
+
+    /* Buttons styling */
+    .buttons-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin: 20px auto;
+      padding: 0 20px;
+      max-width: 500px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      width: 140px;
+      white-space: nowrap;
+    }
+
+    #submit-btn {
+      background: #28a745;
+      color: #ffffff;
+    }
+
+    #reset-btn {
+      background: #dc3545;
+      color: #ffffff;
+    }
+
+    #show-answers-btn {
+      background: #007bff;
+      color: #ffffff;
+      opacity: 0;
+      width: 0;
+      padding: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    #show-answers-btn.visible {
+      opacity: 1;
+      width: 200px;
+      padding: 10px 20px;
+      pointer-events: auto;
+    }
+
+    #results {
+      text-align: center;
+      margin: 20px 0;
+      min-height: 27px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #28a745;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 10px; }
+      .btn {
+        width: 120px;
+        font-size: 13px;
+        padding: 8px 15px;
+      }
+      #show-answers-btn.visible { width: 120px; }
+    }
+
+    @media (max-width: 480px) {
+      .buttons-container {
+        gap: 10px;
+        padding: 0 5px;
+      }
+      .btn {
+        width: 100px;
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+      #show-answers-btn.visible { width: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Correct the errors in Cintia's email to her friend, Katy.</h1>
+
+  <div class="text-container">
+    <p>
+      How are things with you 
+      <div class="input-container">
+        <input type="text" id="word1" data-correct="?" value=".">
+      </div>
+      I'm 
+      <div class="input-container">
+        <input type="text" id="word2" data-correct="living" value="lived" class="underline">
+      </div>
+      with an Irish family to improve my English. I think I speak 
+      <div class="input-container">
+        <input type="text" id="word3" data-correct="English well now" value="well English now" class="underline">
+      </div>
+      , and I feel more 
+      <div class="input-container">
+        <input type="text" id="word4" data-correct="confident" value="confiant" class="underline">
+      </div>
+      . The family I'm staying with are very nice. The father, Mr Kendall, is 
+      <div class="input-container">
+        <input type="text" id="word5" data-correct="a teacher" value="teacher" class="underline">
+      </div>
+      , and Mrs Kendall is a nurse. <br><br>
+      I travel 
+      <div class="input-container">
+        <input type="text" id="word6" data-correct="to" value="for" class="underline">
+      </div>
+      my English school by bus, so it's very easy. After class, I'm enjoying getting to know Dublin. Yesterday evening, I 
+      <div class="input-container">
+        <input type="text" id="word7" data-correct="went" value="go" class="underline">
+      </div>
+      to a pub with fantastic live music. <br><br>
+      When 
+      <div class="input-container">
+        <input type="text" id="word8" data-correct="are you" value="you are" class="underline">
+      </div>
+      coming to see me? Or I could come over to London to visit you? <br><br>
+      Can't 
+      <div class="input-container">
+        <input type="text" id="word9" data-correct="wait" value="waiting" class="underline">
+      </div>
+      to see you!
+    </p>
+  </div>
+
+  <div class="buttons-container">
+    <button id="reset-btn" class="btn">Reset</button>
+    <button id="submit-btn" class="btn">Submit</button>
+    <button id="show-answers-btn" class="btn">Show Answers</button>
+  </div>
+
+  <div id="results"></div>
+
+  <script>
+    const submitBtn = document.getElementById('submit-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const showAnswersBtn = document.getElementById('show-answers-btn');
+    const resultsDiv = document.getElementById('results');
+    const textContainer = document.querySelector('.text-container');
+    let isShowingAnswers = false;
+
+    const inputFields = document.querySelectorAll('.input-container input');
+
+    inputFields.forEach(input => {
+      const container = input.parentElement;
+      
+      const errorIcon = document.createElement('span');
+      errorIcon.classList.add('error-icon');
+      errorIcon.textContent = '✘';
+      container.appendChild(errorIcon);
+
+      const successIcon = document.createElement('span');
+      successIcon.classList.add('success-icon');
+      successIcon.textContent = '✓';
+      container.appendChild(successIcon);
+
+      input.setAttribute('data-initial-value', input.value);
+    });
+
+    function resetTest() {
+      inputFields.forEach(input => {
+        input.value = input.getAttribute('data-initial-value');
+        input.classList.remove('correct', 'incorrect', 'underline');
+
+        const container = input.parentElement;
+        container.querySelector('.error-icon').style.display = 'none';
+        container.querySelector('.success-icon').style.display = 'none';
+      });
+
+      resultsDiv.textContent = '';
+      showAnswersBtn.classList.remove('visible');
+      showAnswersBtn.textContent = 'Show Answers';
+      isShowingAnswers = false;
+    }
+
+    function toggleCorrectAnswers() {
+  isShowingAnswers = !isShowingAnswers;
+  showAnswersBtn.textContent = isShowingAnswers ? 'Show Yours' : 'Show Answers';
+
+  inputFields.forEach(input => {
+    if (isShowingAnswers) {
+      // Don't add 'correct' class when showing answers
+      input.value = input.getAttribute('data-correct');
+      // Keep the existing classes to maintain visual feedback
+    } else {
+      // Restore user's input and classes
+      input.value = input.getAttribute('data-user-input');
+      if (input.value.toLowerCase() !== input.getAttribute('data-correct').toLowerCase()) {
+        input.classList.add('incorrect');
+        input.classList.remove('correct');
+      }
+    }
+  });
+}
+
+    function checkAnswers() {
+      let correctCount = 0;
+      const totalWords = inputFields.length;
+
+      inputFields.forEach(input => {
+        const userAnswer = input.value.trim();
+        const correctAnswer = input.getAttribute('data-correct');
+        input.setAttribute('data-user-input', userAnswer);
+
+        const container = input.parentElement;
+        const errorIcon = container.querySelector('.error-icon');
+        const successIcon = container.querySelector('.success-icon');
+
+        if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+          correctCount++;
+          input.classList.add('correct');
+          input.classList.remove('incorrect', 'underline');
+          errorIcon.style.display = 'none';
+          successIcon.style.display = 'block';
+        } else {
+          input.classList.add('incorrect', 'underline');
+          input.classList.remove('correct');
+          errorIcon.style.display = 'block';
+          successIcon.style.display = 'none';
+        }
+      });
+
+      const percentage = Math.round((correctCount / totalWords) * 100);
+      resultsDiv.textContent = `You got ${correctCount} out of ${totalWords} correct! (${percentage}%)`;
+
+      showAnswersBtn.classList.add('visible');
+    }
+
+    submitBtn.addEventListener('click', checkAnswers);
+    resetBtn.addEventListener('click', resetTest);
+    showAnswersBtn.addEventListener('click', toggleCorrectAnswers);
+  </script>
+</body>
+</html>
